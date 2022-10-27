@@ -1,6 +1,9 @@
 // URL to your production code when you publish yoru google app script as a web app
 // You will get this URL when you publish your google apps script as a web app
-let prefix="YourWebAppURLHere" // looks like: https://script.google.com/macros/s/AKfycbz90JgtbAjrjz8c8WQGjgy8kM2GtdCAulom8XWOQyGoeX8DXM5XsmUMAcSYSSyZwwNSLq/exec
+let prefix="https://script.google.com/macros/s/AKfycbzsV76306Gb1k5Ti_vgivD-cCOnOPkoK79DJsfNIbDA3AfGeHQXy07sQMVHGso-6Bo7ag/exec" 
+
+// looks like: https://script.google.com/macros/s/AKfycbz90JgtbAjrjz8c8WQGjgy8kM2GtdCAulom8XWOQyGoeX8DXM5XsmUMAcSYSSyZwwNSLq/exec
+
 const dealy_seconds = 4 // how long data validation messages are visible
 
 //example call: file:///C:/Users/Gove/three-tier/datagrid.html?employee
@@ -91,6 +94,11 @@ function change_value(){ // is triggered when a user changes a value in a cell o
             switch(params[2]){                           // params[2] is the field name 
                 case "first_name":                       // validating the first_name field of the employee table  
                     console.log("changing first name")
+                    if(this.value.length < 2){
+                        this.focus()
+                        alert("First name must be at least two characters")
+                        return
+                    }
                     break
                 default:    
             }
